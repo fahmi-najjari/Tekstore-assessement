@@ -7,7 +7,7 @@ function OneProduct({ el }) {
   }
   return (
     <>
-      <div className="card" style={{ width: "18rem" }} onClick={handleDescription}>
+      <div className="card"   style={{ width: '18rem', cursor: 'pointer' }}  onClick={handleDescription}>
         <img
           src={el.imageUrl}
           className="card-img-top img-fluid d-block"
