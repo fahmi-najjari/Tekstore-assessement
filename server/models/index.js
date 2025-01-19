@@ -17,7 +17,7 @@ const connection = new Sequelize('tekstore1', 'root', 'root', {
   })
 
 
-  const Product = require('./product')(connection,DataTypes )
+   const Product = require('./product')(connection,DataTypes )
 
  /* const creatingData=async(sampleData)=>{
   try {
@@ -31,18 +31,18 @@ const connection = new Sequelize('tekstore1', 'root', 'root', {
 
  }
 
-creatingData(data) */
-
+creatingData(data)    */
 
  
 
 
-  /* connection.sync({alter:true})
+/*
+   connection.sync({force:true})
   .then (()=>{
  console.log("sync uccessully");
  
   })
   .catch((error)=>{
     console.error("error is ",error)
-  }) */
+  })      */
 module.exports ={connection,Product}

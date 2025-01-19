@@ -1,9 +1,9 @@
 import React from 'react'
 import OneProduct from './OneProduct';
 
-function ListProducts({sample,setSelectProduct,setView}) {
+function ListProducts({filteredProducts,setSelectProduct,setView}) {
   
-    if (!sample ) {
+    if (!filteredProducts ) {
         return <p>No products </p>;}
 
 
@@ -13,7 +13,7 @@ function ListProducts({sample,setSelectProduct,setView}) {
     
     <div className="container">
     <div className="row">
-    {sample.map((el,i)=>(
+    {filteredProducts.map((el,i)=>(
         
            <div className="col-md-4 mb-4" key={el.id}>
             <OneProduct el={el}  setSelectProduct={setSelectProduct} setView={setView}/>

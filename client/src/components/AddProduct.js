@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 function AddProduct({HandleaddProduct,setView}) {
     const[name ,setName]=useState('')
     const[description, setDescription]=useState('')
-    const[category,setCategory]=useState('')
+    const[categories,setCategory]=useState('')
     const[price,setPrice]=useState('')
     const[image,setImage]=useState('')
 
     const handleSubmit=()=>{
        
-      const newProduct=  {name,description,category,price,image}
+      const newProduct=  {name,description,categories,price,image}
         HandleaddProduct(newProduct)
         setName('') 
         setDescription('') 
@@ -47,7 +47,7 @@ function AddProduct({HandleaddProduct,setView}) {
     <div className="mb-3 row">
       <label htmlFor="productCategory" className="form-label col-sm-3">Category</label>
       <div className="col-sm-9">
-        <input type="text" className="form-control form-control-sm" id="productCategory" value={category} onChange={(e) => { setCategory(e.target.value) }} />
+        <input type="text" className="form-control form-control-sm" id="productCategory" value={categories} onChange={(e) => { setCategory(e.target.value) }} />
       </div>
     </div>
 

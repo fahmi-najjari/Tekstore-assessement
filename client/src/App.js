@@ -9,24 +9,36 @@ import Contact from './components/Contact';
 import AddProduct from './components/AddProduct';
 
 function App() {
-const [data,setData]=useState()
+const [data,setData]=useState([])
+const [uniqueCategories,setCategories]=useState([])
 const [view, setView]=useState('Home')
-const [selectProduct, setSelectProduct]=useState('null')
+const [selectProduct, setSelectProduct]=useState(null)
+const [selectCategory ,setSelectCategory]=useState('')
 
 const fetchData=async()=>{
   try {
     const products = await axios.get('http://localhost:4999/api/product/')
     console.log('main dataaaaaaaaaa',products.data);
+
     
     if(!products){
       console.log('no data to fetch')
       
     }
     setData(products.data)
+    
+    const uniqueCategories =[...new Set(products.data.map(product => product.categories))]
+   setCategories(uniqueCategories)
+    console.log('categories in apppppppppppppppppppppppppppppp',uniqueCategories);
+    
+
   } catch (error) {
     console.error('error',error)
   }
 }
+
+  const filteredProducts = selectCategory ? data.filter(product => product.categories === selectCategory): data;
+
 
 const HandleaddProduct= async (newProduct)=>{
   try {
@@ -45,10 +57,10 @@ fetchData()
 
   return (
     <div className="App">
-    < Navbar setView={setView}  setSelectProduct={setSelectProduct}  /> 
+    < Navbar setView={setView}   uniqueCategories={uniqueCategories} setSelectCategory={setSelectCategory} /> 
     <div style={{ paddingTop: '80px' }}> 
 
-     {view=== 'products' && <ListProducts sample={data}  setSelectProduct={setSelectProduct} setView={setView} />}
+     {view=== 'products' && <ListProducts filteredProducts={ filteredProducts}  setSelectProduct={setSelectProduct} setView={setView} />}
      {view=== 'Home' && <Home setView={setView}/>}
      {view==='product details'&& <ProductDetails product={selectProduct} setView={setView} />}
      {view==='contact'&&  < Contact />}

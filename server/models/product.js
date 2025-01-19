@@ -23,14 +23,9 @@ module.exports= (connection,DataTypes)=>{
         allowNull: false,
         
       },
-      category: {
-        type: DataTypes.ENUM('Laptops', 'Smartphones', 'Accessories'),
+      categories: {
+        type: DataTypes.ENUM('phones', 'electronics', 'computers',),
         allowNull: false,
-        
-      },
-      imageUrl: {
-        type: DataTypes.STRING,
-        
       },
       
 
