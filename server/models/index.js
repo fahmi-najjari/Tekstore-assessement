@@ -19,7 +19,7 @@ const connection = new Sequelize('tekstore1', 'root', 'root', {
 
   const Product = require('./product')(connection,DataTypes )
 
- const creatingData=async(sampleData)=>{
+ /* const creatingData=async(sampleData)=>{
   try {
     const products = await Product.bulkCreate(sampleData)
     console.log('data created successfully');
@@ -31,7 +31,7 @@ const connection = new Sequelize('tekstore1', 'root', 'root', {
 
  }
 
-creatingData(data)
+creatingData(data) */
 
 
  

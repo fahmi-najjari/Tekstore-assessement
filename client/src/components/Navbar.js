@@ -26,6 +26,9 @@ function Navbar({setView}) {
               <a className="nav-link" href="#"  style={{cursor:'pointer'}} onClick={()=>{setView('products')}} >Products</a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="#"  style={{cursor:'pointer'}} onClick={()=>{setView('add Product')}} >add Product</a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="#"  style={{cursor:'pointer'}} onClick={()=>{setView('contact')}} >Contact</a>
             </li>
           </ul>

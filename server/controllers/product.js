@@ -8,5 +8,16 @@ module.exports={
             console.error('error',error)
         }
         
+    },
+    addProduct :async (req,res)=>{
+        try {
+            let product =req.body
+            const newProduct = await Product.create(product)
+            res.status(201).json(newProduct)
+
+        } catch (error) {
+            throw error
+        }
     }
+
 }

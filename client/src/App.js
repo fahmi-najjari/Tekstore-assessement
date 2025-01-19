@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import ProductDetails from './components/ProductDetails';
 import Home from './components/Home';
 import Contact from './components/Contact';
+import AddProduct from './components/AddProduct';
 
 function App() {
 const [data,setData]=useState()
@@ -26,6 +27,18 @@ const fetchData=async()=>{
     console.error('error',error)
   }
 }
+
+const HandleaddProduct= async (newProduct)=>{
+  try {
+   await axios.post('http://localhost:4999/api/product/',newProduct)
+   fetchData()
+   setView('products')
+   console.log("product added ")
+  } catch (error) {
+    throw error
+  }
+
+}
 useEffect(()=>{
 fetchData()
 },[])
@@ -39,6 +52,7 @@ fetchData()
      {view=== 'Home' && <Home setView={setView}/>}
      {view==='product details'&& <ProductDetails product={selectProduct} setView={setView} />}
      {view==='contact'&&  < Contact />}
+     {view==='add Product' &&<  AddProduct   HandleaddProduct={HandleaddProduct}  setView={setView}/>}
      </div>
     </div>
   );
