@@ -3,9 +3,14 @@ import axios from 'axios'
 import './App.css';
 import ListProducts from './components/ListProducts';
 import Navbar from './components/Navbar';
+import ProductDetails from './components/ProductDetails';
+import Home from './components/Home';
+import Contact from './components/Contact';
 
 function App() {
 const [data,setData]=useState()
+const [view, setView]=useState('Home')
+const [selectProduct, setSelectProduct]=useState('null')
 
 const fetchData=async()=>{
   try {
@@ -27,9 +32,13 @@ fetchData()
 
   return (
     <div className="App">
-    < Navbar />
+    < Navbar setView={setView}  setSelectProduct={setSelectProduct}  /> 
     <div style={{ paddingTop: '80px' }}> 
-     <ListProducts sample={data}  />
+
+     {view=== 'products' && <ListProducts sample={data}  setSelectProduct={setSelectProduct} setView={setView} />}
+     {view=== 'Home' && <Home setView={setView}/>}
+     {view==='product details'&& <ProductDetails product={selectProduct} setView={setView} />}
+     {view==='contact'&&  < Contact />}
      </div>
     </div>
   );

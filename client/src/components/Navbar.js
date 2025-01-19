@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Navbar() {
+function Navbar({setView}) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top"> 
    
       <div className="container">
-        <a className="navbar-brand" href="#">Tek store</a>
+        <a className="navbar-brand" href="#"     style={{cursor:'pointer'}} onClick={()=>{setView('Home')}} >Tek store</a>
         <button
           className="navbar-toggler"
           type="button"
@@ -20,13 +20,13 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
+              <a className="nav-link active" aria-current="page" href="#"  style={{cursor:'pointer'}} onClick={()=>{setView('Home')}}>Home</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Products</a>
+              <a className="nav-link" href="#"  style={{cursor:'pointer'}} onClick={()=>{setView('products')}} >Products</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Contact</a>
+              <a className="nav-link" href="#"  style={{cursor:'pointer'}} onClick={()=>{setView('contact')}} >Contact</a>
             </li>
           </ul>
           <form className="d-flex ms-auto">
