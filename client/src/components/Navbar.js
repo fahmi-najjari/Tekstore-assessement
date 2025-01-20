@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Navbar({setView, uniqueCategories,setSelectCategory} ) {
+function Navbar({setView, uniqueCategories,setSelectCategory,setQuery} ) {
   console.log('categories in navbar',uniqueCategories);
   
   return (
@@ -44,12 +44,12 @@ function Navbar({setView, uniqueCategories,setSelectCategory} ) {
               <option value="">Search by category</option>
 
               {uniqueCategories.map((category, index) => (
-                <option key={index} value={uniqueCategories}>  {category}   </option>
+                <option key={index} value={category}>  {category}   </option>
               ))}
  
 
             </select>
-            <input className="form-control me-2"  type="search" placeholder="Search" aria-label="Search" />
+            <input className="form-control me-2"  type="search" placeholder="Search" aria-label="Search"  onChange={(e)=>{setQuery(e.target.value)}}/>
             <button className="btn btn-outline-primary" type="submit">  Search </button>
           </form>
 

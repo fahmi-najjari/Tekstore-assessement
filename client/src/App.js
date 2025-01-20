@@ -14,6 +14,7 @@ const [uniqueCategories,setCategories]=useState([])
 const [view, setView]=useState('Home')
 const [selectProduct, setSelectProduct]=useState(null)
 const [selectCategory ,setSelectCategory]=useState('')
+const [query,setQuery]=useState('')
 
 const fetchData=async()=>{
   try {
@@ -38,7 +39,7 @@ const fetchData=async()=>{
 }
 
   const filteredProducts = selectCategory ? data.filter(product => product.categories === selectCategory): data;
-
+ const filteredProductsbar =data.filter((element)=>(element.name.toLowerCase().includes(query.toLowerCase())))
 
 const HandleaddProduct= async (newProduct)=>{
   try {
@@ -57,10 +58,10 @@ fetchData()
 
   return (
     <div className="App">
-    < Navbar setView={setView}   uniqueCategories={uniqueCategories} setSelectCategory={setSelectCategory} /> 
+    < Navbar setView={setView}   uniqueCategories={uniqueCategories} setSelectCategory={setSelectCategory} setQuery={setQuery}/> 
     <div style={{ paddingTop: '80px' }}> 
 
-     {view=== 'products' && <ListProducts filteredProducts={ filteredProducts}  setSelectProduct={setSelectProduct} setView={setView} />}
+     {view=== 'products' && <ListProducts filteredProductsbar={filteredProductsbar} filteredProducts={ filteredProducts}  setSelectProduct={setSelectProduct} setView={setView} />}
      {view=== 'Home' && <Home setView={setView}/>}
      {view==='product details'&& <ProductDetails product={selectProduct} setView={setView} />}
      {view==='contact'&&  < Contact />}

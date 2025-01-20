@@ -1,19 +1,19 @@
 import React from 'react'
 import OneProduct from './OneProduct';
 
-function ListProducts({filteredProducts,setSelectProduct,setView}) {
+function ListProducts({filteredProductsbar,filteredProducts,setSelectProduct,setView}) {
   
     if (!filteredProducts ) {
         return <p>No products </p>;}
 
 
-
+ const productsToRender  = filteredProductsbar || filteredProducts
   return (
-    <div>
+    
     
     <div className="container">
     <div className="row">
-    {filteredProducts.map((el,i)=>(
+    {productsToRender .map((el,i)=>(
         
            <div className="col-md-4 mb-4" key={el.id}>
             <OneProduct el={el}  setSelectProduct={setSelectProduct} setView={setView}/>
@@ -24,7 +24,7 @@ function ListProducts({filteredProducts,setSelectProduct,setView}) {
   ))}
   </div>
   </div>
-  </div>
+  
   )
 }
 
