@@ -1,7 +1,7 @@
 import React from 'react'
 import OneProduct from './OneProduct';
 
-function ListProducts({filteredProductsbar,filteredProducts,setSelectProduct,setView,handleUpdate }) {
+function ListProducts({filteredProductsbar,filteredProducts,setSelectProduct,setView,handleUpdate,handleDeleteProduct  }) {
   
     if (!filteredProducts ) {
         return <p>No products </p>;}
@@ -15,7 +15,7 @@ function ListProducts({filteredProductsbar,filteredProducts,setSelectProduct,set
     {productsToRender .map((el,i)=>(
         
            <div className="col-md-4 mb-4" key={el.id}>
-            <OneProduct el={el}  setSelectProduct={setSelectProduct} setView={setView} handleUpdate={handleUpdate} />
+            <OneProduct el={el}  setSelectProduct={setSelectProduct} setView={setView} handleUpdate={handleUpdate} handleDeleteProduct ={handleDeleteProduct } />
           </div>
 
         

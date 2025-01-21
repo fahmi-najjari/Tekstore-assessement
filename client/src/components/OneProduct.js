@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProductDetails from "./ProductDetails";
 
 
-function OneProduct({ el,setSelectProduct,setView, handleUpdate }) {
+function OneProduct({ el,setSelectProduct,setView, handleUpdate, handleDeleteProduct  }) {
   const [isDescription, setIsDescription]=useState(false)
   const [isupdate,setIsupdate]=useState(false)
   const [name, setName]=useState(el.name)
@@ -32,7 +32,9 @@ const confirmUpdate=(e)=>{
   handleUpdate(el.id,updateP)
   setIsupdate(false)
 }
-
+const deleteIt=()=>{
+  handleDeleteProduct(el.id)
+}
   const setUpdate=()=>{
     setIsupdate(!isupdate)
 
@@ -55,7 +57,7 @@ const confirmUpdate=(e)=>{
           <p className="card-text">{el.price}.</p>
           <div className="d-flex justify-content-between">
             <button href="#" className="btn btn-primary btn-sm">  Add to cart  </button>
-            <button href="#" className="btn btn-primary btn-sm">  delete  </button>
+            <button href="#" className="btn btn-primary btn-sm" onClick={deleteIt} >  delete  </button>
             <button href="#" className="btn btn-primary btn-sm" onClick={setUpdate} >  update </button>
           </div>
 

@@ -50,6 +50,19 @@ const handleUpdate=async (id , product)=>{
     console.error(error,'error')
   }
 }
+const handleDeleteProduct = async (id )=>{
+  try {
+    await axios.delete(`http://localhost:4999/api/product/${id}`)
+    fetchData()
+    setView('products')
+
+  } catch (error) {
+    console.error('error',error)
+    
+  }
+}
+
+
 
 
 const HandleaddProduct= async (newProduct)=>{
@@ -72,7 +85,7 @@ fetchData()
     < Navbar setView={setView}   uniqueCategories={uniqueCategories} setSelectCategory={setSelectCategory} setQuery={setQuery}/> 
     <div style={{ paddingTop: '80px' }}> 
 
-     {view=== 'products' && <ListProducts  handleUpdate={handleUpdate} filteredProductsbar={filteredProductsbar} filteredProducts={ filteredProducts}  setSelectProduct={setSelectProduct} setView={setView} />}
+     {view=== 'products' && <ListProducts handleDeleteProduct={handleDeleteProduct } handleUpdate={handleUpdate} filteredProductsbar={filteredProductsbar} filteredProducts={ filteredProducts}  setSelectProduct={setSelectProduct} setView={setView} />}
      {view=== 'Home' && <Home setView={setView}/>}
      {view==='product details'&& <ProductDetails product={selectProduct} setView={setView} />}
      {view==='contact'&&  < Contact />}
