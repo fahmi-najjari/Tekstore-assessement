@@ -49,6 +49,10 @@ function Navbar({setView, uniqueCategories,setSelectCategory,setQuery} ) {
  
 
             </select>
+           
+           
+           
+           
             <input className="form-control me-2"  type="search" placeholder="Search" aria-label="Search"  onChange={(e)=>{setQuery(e.target.value)}}/>
             <button className="btn btn-outline-primary" type="submit">  Search </button>
           </form>

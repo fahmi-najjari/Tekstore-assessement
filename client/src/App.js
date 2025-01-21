@@ -39,7 +39,18 @@ const fetchData=async()=>{
 }
 
   const filteredProducts = selectCategory ? data.filter(product => product.categories === selectCategory): data;
- const filteredProductsbar =data.filter((element)=>(element.name.toLowerCase().includes(query.toLowerCase())))
+  const filteredProductsbar =data.filter((element)=>(element.name.toLowerCase().includes(query.toLowerCase())))
+const handleUpdate=async (id , product)=>{
+  try {
+     await axios.put(`http://localhost:4999/api/product/${id}`,product)
+     fetchData()
+     setView('products')
+
+  } catch (error) {
+    console.error(error,'error')
+  }
+}
+
 
 const HandleaddProduct= async (newProduct)=>{
   try {
@@ -61,7 +72,7 @@ fetchData()
     < Navbar setView={setView}   uniqueCategories={uniqueCategories} setSelectCategory={setSelectCategory} setQuery={setQuery}/> 
     <div style={{ paddingTop: '80px' }}> 
 
-     {view=== 'products' && <ListProducts filteredProductsbar={filteredProductsbar} filteredProducts={ filteredProducts}  setSelectProduct={setSelectProduct} setView={setView} />}
+     {view=== 'products' && <ListProducts  handleUpdate={handleUpdate} filteredProductsbar={filteredProductsbar} filteredProducts={ filteredProducts}  setSelectProduct={setSelectProduct} setView={setView} />}
      {view=== 'Home' && <Home setView={setView}/>}
      {view==='product details'&& <ProductDetails product={selectProduct} setView={setView} />}
      {view==='contact'&&  < Contact />}
